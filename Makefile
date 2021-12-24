@@ -41,14 +41,14 @@ stop:
 	@echo
 
 ## Access docker container bash
-bash: start
+bash:
 	@echo "Access docker container bash"
 	@echo "---------------------------"
 	@echo
 	$(RUN) bash
 
 ## Show docker container logs
-logs: start
+logs:
 	@echo "Show docker container logs"
 	@echo "---------------------------"
 	@echo
