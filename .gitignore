@@ -1,4 +1,4 @@
-###> burus86/template-docker-php ###
+###> burus86/skeleton-docker-php ###
 /bin/*
 !/bin/console
 /.env
@@ -6,6 +6,6 @@
 /.env.*.local
 /var/
 /vendor/
-###< burus86/template-docker-php ###
+###< burus86/skeleton-docker-php ###
 
 .idea/
