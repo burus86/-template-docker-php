@@ -41,10 +41,6 @@ Open in your favorite web browser the website [http://localhost:8080/](http://lo
 
 ## Additional information
 
-Stop docker containers:
-
-    make stop
-
 Access bash for docker container:
 
     make bash
@@ -52,6 +48,10 @@ Access bash for docker container:
 Show logs for docker container:
 
     make logs
+
+Stop docker containers:
+
+    make stop
 
 ## Future improvements
 
