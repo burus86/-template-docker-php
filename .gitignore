@@ -1,0 +1,11 @@
+###> burus86/template-docker-php ###
+/bin/*
+!/bin/console
+/.env
+/.env.local
+/.env.*.local
+/var/
+/vendor/
+###< burus86/template-docker-php ###
+
+.idea/

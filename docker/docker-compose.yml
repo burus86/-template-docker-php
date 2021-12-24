@@ -1,0 +1,20 @@
+version: "3.7"
+services:
+  php:
+    container_name: template-docker-php
+    build: .
+    ports:
+      - 8080:8080
+    volumes:
+      - ../:/var/www/
+    networks:
+      - base
+    command: symfony serve --port=8080
+    healthcheck:
+      test: curl -v -o /dev/null http://localhost:8080 || exit 1
+      interval: 15s
+      timeout: 3s
+      retries: 3
+      start_period: 30s
+networks:
+  base:
