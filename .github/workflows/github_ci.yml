@@ -9,13 +9,15 @@ on:
   push:
     branches:
       - main
+      - dev
       - dev/*
       - ft/*
       - hotfix/*
+      - tmp
       - tmp/*
       - v1.*
-  pull_request:
-    branches: [ main ]
+#  pull_request:
+#    branches: [ main ]
 
   # Allows you to run this workflow manually from the Actions tab
   workflow_dispatch:
@@ -45,11 +47,7 @@ jobs:
             case $status in
               starting) sleep 1;;
               healthy) exit 0;;
-              unhealthy)
-                docker-compose ps
-                docker-compose logs
-                exit 1
-              ;;
+              unhealthy) exit 1;;
             esac
           done
           exit 1

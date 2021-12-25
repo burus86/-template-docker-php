@@ -1,4 +1,4 @@
-# template-docker-php
+# skeleton-docker-php
 
 1. [About project](#about-project)
 1. [Set up project](#set-up-project)
@@ -11,7 +11,7 @@
 
 ## About project
 - [x] Docker with [PHP 8.1](https://www.php.net/supported-versions.php) container and [Symfony Local Web Server](https://symfony.com/doc/current/setup/symfony_server.html)
-- [x] [Makefile](https://www.gnu.org/software/make/manual/make.html#Introduction) wit docker commands
+- [x] [Makefile](https://www.gnu.org/software/make/manual/make.html#Introduction) with docker commands
 - [x] [GitHub Actions](https://github.com/features/actions) to automate, customize, and execute your software development workflows right in your repository, including CI/CD
 - [x] MIT License
 
@@ -25,9 +25,9 @@
 
 Clone repository and move inside:
 
-    git clone https://github.com/burus86/template-docker-php.git
+    git clone https://github.com/burus86/skeleton-docker-php.git
 
-    cd template-docker-php
+    cd skeleton-docker-php
 
 Build and up docker containers:
 

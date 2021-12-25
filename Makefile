@@ -1,7 +1,7 @@
 # variables
 .DEFAULT_GOAL := help
 .PHONY : help start stop bash logs
-CONTAINER_NAME = template-docker-php
+CONTAINER_NAME = skeleton-docker-php
 CONTAINER_OPTIONS = -it
 RUN = docker exec $(CONTAINER_OPTIONS) $(CONTAINER_NAME)
 COLOR_RESET = \033[0m
