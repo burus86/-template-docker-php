@@ -48,6 +48,10 @@ RUN pecl install apcu \
 # Copy PHP files
 COPY php/ /usr/local/etc/php/
 
+# Set timezone
+ENV TIMEZONE=Europe/Madrid
+RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /etc/timezone
+
 WORKDIR /var/www/
 
 EXPOSE 8080
