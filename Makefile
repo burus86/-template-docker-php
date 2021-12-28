@@ -26,7 +26,7 @@ help:
 
 ## Start docker containers
 start:
-	@echo "Starting docker containers"
+	@printf "${COLOR_COMMENT}Starting docker containers ${COLOR_RESET}\n"
 	@echo "---------------------------"
 	@echo
 	docker-compose -f docker/docker-compose.yml up -d --build --remove-orphans
@@ -34,7 +34,7 @@ start:
 
 ## Stop docker containers
 stop:
-	@echo "Stopping docker containers"
+	@printf "${COLOR_COMMENT}Stopping docker containers ${COLOR_RESET}\n"
 	@echo "---------------------------"
 	@echo
 	docker-compose -f docker/docker-compose.yml down --remove-orphans
@@ -42,14 +42,14 @@ stop:
 
 ## Access docker container bash
 bash:
-	@echo "Access docker container bash"
+	@printf "${COLOR_COMMENT}Access docker container bash ${COLOR_RESET}\n"
 	@echo "---------------------------"
 	@echo
 	$(RUN) bash
 
 ## Show docker container logs
 logs:
-	@echo "Show docker container logs"
+	@printf "${COLOR_COMMENT}Show docker container logs ${COLOR_RESET}\n"
 	@echo "---------------------------"
 	@echo
 	docker logs -f -n20 $(CONTAINER_NAME)
