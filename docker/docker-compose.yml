@@ -10,6 +10,9 @@ services:
     networks:
       - base
     command: symfony serve --port=8080
+#    env_file: ../.env
+#    environment:
+#      - APP_ENV=prod
     healthcheck:
       test: curl -v -o /dev/null http://localhost:8080 || exit 1
       interval: 15s
