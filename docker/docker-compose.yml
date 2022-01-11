@@ -19,5 +19,47 @@ services:
       timeout: 3s
       retries: 3
       start_period: 5s
+  mysql-server:
+    image: mysql:5.7 # TODO
+    container_name: skeleton-docker-mysql-server
+    restart: always
+    ports:
+      - 3306:3306
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456 # ${MYSQL_ROOT_PASSWORD}
+  redis-server:
+    image: redis:latest
+    container_name: skeleton-docker-redis-server
+    command: redis-server /usr/local/etc/redis/redis.conf # --requirepass 123456
+    restart: always
+#    hostname: redis
+    ports:
+      - 6379:6379
+    volumes:
+#      - ./redis/dump.rdb:/data/dump.rdb
+      - ./redis/redis.conf:/usr/local/etc/redis/redis.conf
+  rabbitmq-server:
+    image: rabbitmq:latest #rabbitmq:management
+    container_name: skeleton-docker-rabbitmq-server
+    restart: always
+#    hostname: rabbitmq
+    ports:
+      - 5672:5672
+      - 15672:15672
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+#      - ./rabbitmq/setup/:/setup
+    env_file: ../.env.dist
+#    environment:
+#      - RABBIT_HOST=${RABBIT_HOST}
+#      - RABBIT_PORT=${RABBIT_PORT}
+#      - RABBITMQ_DEFAULT_USER=${RABBIT_SUPER_USER}
+#      - RABBITMQ_DEFAULT_PASS=${RABBIT_SUPER_PASSWORD}
+#      - RABBITMQ_DEFAULT_VHOST=${RABBIT_VHOST}
+#      - RABBITMQ_SUB_USER=${RABBIT_SUP_USER}
+#      - RABBITMQ_SUB_PASS=${RABBIT_SUP_PASSWORD}
+#      - RABBITMQ_TAG=${RABBITMQ_TAG}
 networks:
   base:
+  rabbitmq-data:
+    driver: local

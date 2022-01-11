@@ -62,6 +62,7 @@ Access bash for PHP docker container:
 
 - [x] **[Upgrade PHP](https://www.php.net/supported-versions.php)** to latest stable version: 8.1
 - [ ] Add database container: MySQL or PostgreSQL
+- [ ] Add redis and RabbitMQ containers
 
 ## License
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
