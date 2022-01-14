@@ -29,9 +29,9 @@ Clone repository and move inside:
 
     cd skeleton-docker-php
 
-Build and up docker containers:
+Build and up all docker containers defined in [docker/docker-compose.yml](docker/docker-compose.yml):
 
-    make start
+    make docker-start
 
 ### Execute project
 
@@ -41,17 +41,22 @@ Open in your favorite web browser the website [http://localhost:8080/](http://lo
 
 ## Additional information
 
-Access bash for docker container:
+Stop all docker containers defined in [docker/docker-compose.yml](docker/docker-compose.yml):
 
-    make bash
+    make docker-stop
 
-Show logs for docker container:
+List of all docker containers created, with an optional parameter `OPTIONS`:
 
-    make logs
+    make docker-ps
+    make docker-ps OPTIONS=-as
 
-Stop docker containers:
+Show logs for PHP docker container:
 
-    make stop
+    make docker-logs
+
+Access bash for PHP docker container:
+
+    make docker-bash
 
 ## Future improvements
 
