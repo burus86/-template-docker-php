@@ -2,6 +2,7 @@ version: "3.7"
 services:
   php:
     container_name: skeleton-docker-php
+    image: skeleton-docker-php
     build: .
     ports:
       - 8080:8080
