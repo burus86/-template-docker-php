@@ -10,7 +10,7 @@
 1. [License](#license)
 
 ## About project
-- [x] Docker with [PHP 8.1](https://www.php.net/supported-versions.php) container and [Symfony Local Web Server](https://symfony.com/doc/current/setup/symfony_server.html)
+- [x] Docker with [PHP 8.2](https://www.php.net/supported-versions.php) container and [Symfony Local Web Server](https://symfony.com/doc/current/setup/symfony_server.html)
 - [x] [Makefile](https://www.gnu.org/software/make/manual/make.html#Introduction) with docker commands
 - [x] [GitHub Actions](https://github.com/features/actions) to automate, customize, and execute your software development workflows right in your repository, including CI/CD
 - [x] MIT License
@@ -60,7 +60,7 @@ Access bash for PHP docker container:
 
 ## Future improvements
 
-- [x] **[Upgrade PHP](https://www.php.net/supported-versions.php)** to latest stable version: 8.1
+- [x] **[Upgrade PHP](https://www.php.net/supported-versions.php)** to latest stable version: 8.2
 - [ ] Add database container: MySQL or PostgreSQL
 
 ## License

@@ -30,7 +30,7 @@ docker-start:
 	@printf "${COLOR_COMMENT}Building and starting all docker containers defined in ${DOCKER_COMPOSE_FILE} ${COLOR_RESET}\n"
 	@echo "---------------------------"
 	@echo
-	docker-compose -f ${DOCKER_COMPOSE_FILE} up -d --build --remove-orphans
+	docker-compose -f ${DOCKER_COMPOSE_FILE} up -d --build
 	@echo
 
 ## Stop all docker containers defined in docker/docker-compose.yml
