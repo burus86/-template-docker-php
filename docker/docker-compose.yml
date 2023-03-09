@@ -9,7 +9,7 @@ services:
       - ../:/var/www/
     networks:
       - base
-    command: symfony serve --port=8080
+    command: symfony server:start --port=8080
     healthcheck:
       test: curl -v -o /dev/null http://localhost:8080 || exit 1
       interval: 15s

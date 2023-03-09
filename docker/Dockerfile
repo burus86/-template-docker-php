@@ -4,7 +4,7 @@
 
 
 # https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
-ARG PHP_VERSION=8.1
+ARG PHP_VERSION=8.2
 
 # "php" stage
 FROM php:${PHP_VERSION}-fpm
@@ -18,6 +18,7 @@ RUN apt-get update && apt-get install -y \
         libssh-dev \
         libonig-dev \
         libbz2-dev \
+        sudo \
     && docker-php-ext-install \
         pcntl \
         mbstring \
@@ -31,8 +32,11 @@ RUN apt-get install -y zlib1g-dev libicu-dev g++ \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
 
-# Install Symfony Local Web Server and Composer
-RUN wget https://get.symfony.com/cli/installer -O - | bash && mv /root/.symfony/bin/symfony /usr/local/bin/symfony
+# Install Symfony Local Web Server
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | sudo -E bash
+RUN sudo apt install symfony-cli
+
+# Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN usermod -u 1000 www-data
