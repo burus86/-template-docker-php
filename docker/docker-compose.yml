@@ -9,12 +9,14 @@ services:
       - ../:/var/www/
     networks:
       - base
-    command: symfony server:start --port=8080
-    healthcheck:
-      test: curl -v -o /dev/null http://localhost:8080 || exit 1
-      interval: 15s
-      timeout: 3s
-      retries: 3
-      start_period: 5s
+  nginx:
+    build:
+      context: ./nginx
+    ports:
+      - 8001:80
+    networks:
+      - base
+    env_file:
+      - .env.nginx.local
 networks:
   base:

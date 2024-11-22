@@ -35,8 +35,8 @@ RUN apk add --no-cache zlib-dev icu-dev g++ \
     && docker-php-ext-install intl
 
 # Install Symfony Local Web Server
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.alpine.sh' | sh
-RUN apk add --no-cache symfony-cli
+#RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.alpine.sh' | sh
+#RUN apk add --no-cache symfony-cli
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer

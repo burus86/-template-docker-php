@@ -1,6 +1,7 @@
 ###> burus86/skeleton-docker-php ###
 /bin/*
 !/bin/console
+/docker/.env.nginx.local
 /.env
 /.env.local
 /.env.*.local
