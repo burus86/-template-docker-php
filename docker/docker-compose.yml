@@ -3,17 +3,16 @@ services:
   php:
     container_name: skeleton-docker-php
     build: .
-    ports:
-      - 8080:8080
-    volumes:
-      - ../:/var/www/
+    #volumes:
+      #- ../:/var/www/
     networks:
       - base
   nginx:
+    container_name: skeleton-docker-nginx
     build:
       context: ./nginx
     ports:
-      - 8001:80
+      - 80:80
     networks:
       - base
     env_file:

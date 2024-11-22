@@ -70,6 +70,6 @@ RUN ln -snf /usr/share/zoneinfo/$TIMEZONE /etc/localtime && echo $TIMEZONE > /et
 
 WORKDIR /var/www/
 
-EXPOSE 8080
+#EXPOSE 80
 
 RUN ls -lisa /var/www
