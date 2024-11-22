@@ -10,16 +10,17 @@ ARG ALPINE_VERSION=3.20
 # "php" stage
 FROM php:${PHP_VERSION}-fpm-alpine${ALPINE_VERSION}
 
-RUN apt-get update && apt-get install -y \
+RUN apk update && apk add --no-cache \
         git \
         wget \
         unzip \
-        libaio1 \
-        libpq-dev \
-        libssh-dev \
-        libonig-dev \
-        libbz2-dev \
+        libaio \
+        postgresql-dev \
+        libssh \
+        oniguruma-dev \
+        bzip2-dev \
         sudo \
+        shadow \
     && docker-php-ext-install \
         pcntl \
         mbstring \
@@ -29,26 +30,36 @@ RUN apt-get update && apt-get install -y \
         pdo_mysql \
         bz2
 
-RUN apt-get install -y zlib1g-dev libicu-dev g++ \
+RUN apk add --no-cache zlib-dev icu-dev g++ \
     && docker-php-ext-configure intl \
     && docker-php-ext-install intl
 
 # Install Symfony Local Web Server
-RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.deb.sh' | sudo -E bash
-RUN sudo apt install symfony-cli
+RUN curl -1sLf 'https://dl.cloudsmith.io/public/symfony/stable/setup.alpine.sh' | sh
+RUN apk add --no-cache symfony-cli
 
 # Install Composer
 RUN curl -sS https://getcomposer.org/installer | php -- --install-dir=/usr/local/bin --filename=composer
 
 RUN usermod -u 1000 www-data
-RUN apt-get clean && rm -rf /var/lib/apt/lists/* /tmp/* /var/tmp/*
+RUN apk cache clean && rm -rf /var/cache/apk/* /tmp/* /var/tmp/*
 
-# Install APCu, OPcache and PCOV
+# Install APCu and OPcache
+RUN apk add --no-cache \
+        autoconf \
+        g++ \
+        make \
+        php-pear
+RUN pear channel-update pear.php.net
 RUN pecl install apcu \
-        pcov \
     && docker-php-ext-enable apcu \
-        opcache \
-        pcov
+    && docker-php-ext-enable opcache
+
+# Install PCOV from GitHub
+#RUN apk add --no-cache libpcre2-dev
+#RUN git clone https://github.com/krakjoe/pcov.git /usr/src/php/ext/pcov \
+#    && docker-php-ext-install pcov \
+#    && docker-php-ext-enable pcov
 
 # Copy PHP files
 COPY php/ /usr/local/etc/php/

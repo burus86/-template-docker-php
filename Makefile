@@ -61,4 +61,4 @@ docker-bash:
 	@printf "${COLOR_COMMENT}PHP docker container bash ${COLOR_RESET}\n"
 	@echo "---------------------------"
 	@echo
-	$(RUN) bash
+	$(RUN) sh
