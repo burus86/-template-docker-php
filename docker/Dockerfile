@@ -4,10 +4,11 @@
 
 
 # https://docs.docker.com/engine/reference/builder/#understand-how-arg-and-from-interact
-ARG PHP_VERSION=8.2
+ARG PHP_VERSION=8.4.1
+ARG ALPINE_VERSION=3.20
 
 # "php" stage
-FROM php:${PHP_VERSION}-fpm
+FROM php:${PHP_VERSION}-fpm-alpine${ALPINE_VERSION}
 
 RUN apt-get update && apt-get install -y \
         git \
